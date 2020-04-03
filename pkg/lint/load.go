@@ -276,6 +276,8 @@ func (cl *ContextLoader) filterDuplicatePackages(pkgs []*packages.Package) []*pa
 }
 
 func (cl *ContextLoader) Load(ctx context.Context, linters []*linter.Config) (*linter.Context, error) {
+	cl.log.Infof("start loading...")
+
 	loadMode := cl.findLoadMode(linters)
 	pkgs, err := cl.loadPackages(ctx, loadMode)
 	if err != nil {
